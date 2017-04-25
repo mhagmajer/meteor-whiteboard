@@ -1,0 +1,19 @@
+<head>
+  <title>Collaborative Whiteboard</title>
+</head>
+
+<body>
+  <h1>Collaborative Whiteboard</h1>
+  {{> board}}
+</body>
+
+<template name="board">
+  <canvas id="canvas" width="400" height="300"></canvas>
+  <label>
+    <input type="checkbox" class="isDrawingMode" checked={{isDrawingMode}}>
+    Drawing enabled?
+  </label>
+  <input type="color" class="color" value={{color}}>
+  <button class="clear">Clear canvas</button>
+  <p>You have {{objectsCount}} objects on canvas.</p>
+</template>
