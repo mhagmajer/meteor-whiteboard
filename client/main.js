@@ -16,7 +16,7 @@ Template.board.onCreated(function () {
 
 Template.board.onRendered(function () {
   const canvas = new fabric.Canvas('canvas', {
-    isDrawingMode: this.isDrawingModeVar.get(),
+    selection: false, // disable group selection
   });
 
   this.canvas = canvas;

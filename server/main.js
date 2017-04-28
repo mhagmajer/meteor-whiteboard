@@ -1,13 +1,15 @@
+/* eslint-disable import/prefer-default-export */
+
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 
-const FabricObjects = new Mongo.Collection('fabricObjects');
+/* export */ const FabricObjects = new Mongo.Collection('fabricObjects');
 
 Meteor.publish('fabricObjects', function fabricObjects() {
-  if (!this.userId()) {
+  // if (!this.userId()) {
     // this.ready();
     // return [];
-  }
+  // }
 
   return FabricObjects.find();
 });
