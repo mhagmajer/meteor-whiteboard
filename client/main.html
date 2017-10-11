@@ -1,19 +1,47 @@
 <head>
-  <title>Collaborative Whiteboard</title>
+  <title>R&D Meteor Whiteboard</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
 </head>
 
 <body>
-  <h1>Collaborative Whiteboard</h1>
   {{> board}}
 </body>
 
 <template name="board">
-  <canvas id="canvas" width="400" height="300"></canvas>
-  <label>
-    <input type="checkbox" class="isDrawingMode" checked={{isDrawingMode}}>
-    Drawing enabled?
-  </label>
-  <input type="color" class="color" value={{color}}>
-  <button class="clear">Clear canvas</button>
-  <p>You have {{objectsCount}} objects on canvas.</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>R&D Meteor Whiteboard</h1>
+      </div>
+      <div class="col-xs-8 txt-center">
+        <canvas id="canvas" height="500px" width="600"></canvas>
+      </div>
+      <div class="col-xs-3">
+        <div class="row">
+          <div class="col-xs-12" style="margin-top: 20px">
+            <label>
+              <input type="checkbox" class="isDrawingMode" checked={{isDrawingMode}}>
+               Drawing enabled?
+          </label>
+          </div>
+          <div class="col-xs-12" style="margin-top: 20px">
+            <input type="color" class="color" value={{color}}>
+          </div>
+          <div class="col-xs-12" style="margin-top: 20px">
+
+            <button class="erase btn btn-info">Erase</button>
+            <button class="draw btn btn-info">draw</button>
+          </div>
+          <div class="col-xs-12" style="margin-top: 20px">
+            <label for="lineWidth">Line Width</label>
+            <input type="range" value="30" min="0" max="150" class="lineWidth " id="lineWidth">
+          </div>
+          <div class="col-xs-12" style="margin-top: 20px">
+            <button class="clear btn btn-danger">Clear canvas</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
