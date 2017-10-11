@@ -12,6 +12,7 @@ Meteor.subscribe('fabricObjects');
 Template.board.onCreated(function () {
   this.isDrawingModeVar = new ReactiveVar(true);
   this.colorVar = new ReactiveVar('#000000');
+  this.lineWidthVar = new ReactiveVar(5);
 });
 
 Template.board.onRendered(function () {
@@ -24,6 +25,7 @@ Template.board.onRendered(function () {
   this.autorun(() => {
     canvas.isDrawingMode = this.isDrawingModeVar.get();
     canvas.freeDrawingBrush.color = this.colorVar.get();
+    canvas.freeDrawingBrush.width = this.lineWidthVar.get();
   });
 
   canvas.on('object:added', (e) => {
@@ -95,6 +97,9 @@ Template.board.helpers({
   objectsCount() {
     return FabricObjects.find().count();
   },
+  lineWidth() {
+    return Template.instance().lineWidthVar.get();
+  }
 });
 
 
@@ -108,6 +113,17 @@ Template.board.events({
   'click .clear': () => {
     Meteor.call('clearCanvas');
   },
+  'click .erase': (instance) => {
+    Template.instance().colorVar.set('#ffffff')
+  },
+  'change .lineWidth': (event, instance) => {
+    instance.lineWidthVar.set(event.target.value)
+    console.log(event.target.value)
+  },
+  'click .draw': (event, instance) => {
+    console.log('draw clicked')
+    Template.instance().colorVar.set('#000')
+  }
 });
 
 
